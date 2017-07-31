@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="regapp">
+  <head>
+    <title>Reg-app</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/app.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/animate.css">
+  </head>
+  <body>
+
+
+  <div class="ui  left inverted vertical menu visible sidebar" ng-init="tab = 1">
+
+    <div class="item">
+       <h4 class="ui inverted header">
+       <i class="heartbeat icon"></i>
+       <div class="content">
+      Cardiac
+
+        <div class="sub header">Disease Registry</div>
+        </div>
+         </h4>
+    </div>
+
+
+    <a class="item" ng-class="{ active: tab === 1}" ng-click="tab = 1">
+        Dashboard <i class=" area chart icon" ng-class="{ blue: tab === 1}"></i>
+
+    </a>
+    <a class="item" ng-class="{ active: tab === 2}" ng-click="tab = 2">
+        New Form  <i class="add circle icon" ng-class="{ blue: tab === 2}"></i>
+
+    </a>
+    <a class="item" ng-class="{ active: tab === 3}" ng-click="tab = 3">
+      Forms <i class="file icon" ng-class="{ blue: tab === 3}"></i>
+
+    </a>
+  </div>
+
+
+
+  <div class=" mainBG" >
+    <!-- Site content !-->
+
+<!-- tab1 Dashboard !-->
+    <div class="tabpanel animated slideInRight" id="tabpanel" ng-show="tab === 1">
+
+  <div class="ui   segment">
+    <h3 class="ui  center aligned header">
+  Dashboard
+  </h3>
+</div>
+
+
+
+    </div>
+
+<!-- tab2 New Form !-->
+
+    <div class="tabpanel animated slideInRight" id="tabpanel"  ng-controller="newformtab" ng-show="tab === 2" ng-init="fn = 1">
+
+      <div class="ui    segment">
+        <h3 class="ui  center aligned header">
+      New Form
+      </h3>
+    </div>
+
+<div class="ui  grid" id="formNav">
+<div class="four wide column"></div>
+
+<div class="eight wide column">
+
+  <div class="ui fluid  buttons">
+ <button class="ui labeled icon black button" ng-class="{ disabled: fn === 1}" ng-click="fn = fn - 1">
+   <i class="left chevron icon"></i>
+   Back
+ </button>
+
+ <button class="ui blue button submitForm" id="formSubmit" ng-class="{ disabled: fn !== 6}" ng-click="submitIt(); fn = 1" >
+
+   Submit
+ </button>
+
+ <button class="ui right labeled icon black button" ng-class="{ disabled: fn === 6}" ng-click="fn = fn + 1">
+   Next
+   <i class="right chevron icon"></i>
+ </button>
+</div>
+</div>
+
+<div class="four wide column"></div>
+
+</div>
+
+
+
+
+
+
+
+<form class="ui form" id="mainForm" name="mform">
+
+
+
+
+
+<!-- Section ONE -->
+
+
+
+
+
+ <div class="sec1 " id="secOne" ng-show="fn === 1">
+
+   <div class="ui horizontal divider">
+     <i class=" grey arrow circle down icon"></i>
+   </div>
+
+
+  <div class="field">
+    <label>Name</label>
+    <div class="two fields">
+      <div class="field">
+        <input type="text" id="f-firstname" placeholder="First Name..." ng-model="form.general.firstName">
+      </div>
+      <div class="field">
+        <input type="text" id="f-lastname" placeholder="Last Name..." ng-model="form.general.lastName">
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+  <label>Residental Address</label>
+  <div class="fields">
+    <div class="four wide field">
+      <input type="text" id="f-housenumber" placeholder="House Number..." ng-model="form.general.houseNumber">
+    </div>
+    <div class="eight wide field">
+      <input type="text" id="f-street" placeholder="Street..." ng-model="form.general.street">
+    </div>
+    <div class="four wide field">
+      <input type="text" id="f-town" placeholder="Town" ng-model="form.general.town">
+    </div>
+  </div>
+</div>
+
+
+<div class="three fields">
+ <div class="field">
+   <label>Age</label>
+   <input type="text" id="f-age" placeholder="Age..." ng-model="form.general.age">
+
+  </div>
+
+<div class="field">
+ <label>Sex</label>
+ <select class="ui fluid dropdown" id="f-sex" ng-model="form.general.sex">
+   <option value="">Sex</option>
+   <option value="Female">Female</option>
+  <option value="Male">Male</option>
+ </select>
+
+   </div>
+
+   <div class="field">
+     <label>Hospital Number</label>
+     <input type="text" id="f-hospitalnumber" placeholder="Hospital Number..." ng-model="form.general.hospitalNumber">
+
+    </div>
+
+
+
+
+
+ </div>
+<div class="field">
+  <label>DOA</label>
+
+ <div class="fields">
+   <div class="two wide field">
+
+     <input type="text" id="f-day" maxlength="2" placeholder="Day" ng-model="form.general.doa.day">
+
+</div>
+
+
+<div class="three wide field">
+ <select class="ui fluid search dropdown" id="f-month" ng-model="form.general.doa.month">
+          <option value="">Month</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+
+</div>
+<div class="two wide field">
+
+<input type="text" id="f-year" maxlength="4" placeholder="Year" ng-model="form.general.doa.year">
+
+</div>
+
+
+
+   </div>
+ </div>
+
+ <div class="field">
+   <label>Contact</label>
+   <div class="two fields">
+     <div class="field">
+       <input type="text" id="f-contact1" placeholder="Primary Phone Number..." ng-model="form.general.contact.primary">
+     </div>
+     <div class="field">
+       <input type="text" id="f-contact2" placeholder="Secondary Phone Number..." ng-model="form.general.contact.secondary">
+     </div>
+   </div>
+ </div>
+
+ </div>
+
+
+
+
+
+
+
+<!-- Section TWO -->
+
+
+
+
+
+
+<div class="sec2" id="secTwo" ng-show="fn === 2">
+  <h4 class="ui dividing centered header" id="something">Symptoms</h4>
+
+  <div class="ui segment">
+    <div class="three fields">
+
+<div class="field">
+ <div class="ui checkbox">
+
+   <input type="checkbox" id="f-symptom1"  ng-init="form.symptoms.s1 = false" ng-model="form.symptoms.s1">
+   <label for="f-symptom1">Shortness of breath on exertion</label>
+ </div>
+</div>
+
+<div class="field">
+ <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-symptom2" ng-init="form.symptoms.s2 = false" ng-model="form.symptoms.s2" >
+   <label for="f-symptom2">Orthopnea</label>
+ </div>
+</div>
+
+
+<div class="field">
+ <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-symptom3" ng-init="form.symptoms.s3 = false" ng-model="form.symptoms.s3" >
+   <label for="f-symptom3">Paroxysmalnocturnal dyspnoea</label>
+ </div>
+</div>
+
+
+
+
+
+</div>
+<div class="three fields">
+
+ <div class="field">
+   <div class="ui  checkbox">
+
+     <input type="checkbox" id="f-symptom4" ng-init="form.symptoms.s4 = false" ng-model="form.symptoms.s4" >
+     <label for="f-symptom4">Leg swelling</label>
+   </div>
+ </div>
+
+ <div class="field">
+   <div class="ui  checkbox">
+
+     <input type="checkbox" id="f-symptom5" ng-init="form.symptoms.s5 = false" ng-model="form.symptoms.s5" >
+     <label for="f-symptom5">Tiredness</label>
+
+</div>
+</div>
+
+ <div class="field"></div>
+ </div>
+</div>
+
+
+
+<h4 class="ui dividing centered header">Signs</h4>
+
+
+<div class="ui segment">
+<div class="three fields">
+
+<div class="field">
+<div class="ui  checkbox">
+
+<input type="checkbox" id="f-sign1"  ng-init="form.signs.sign1 = false" ng-model="form.signs.sign1">
+<label for="f-sign1">Leg oedema</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui  checkbox">
+
+<input type="checkbox" id="f-sign2" ng-init="form.signs.sign2 = false" ng-model="form.signs.sign2" >
+ <label for="f-sign2">Raised JVP</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui  checkbox">
+
+ <input type="checkbox" id="f-sign3" ng-init="form.signs.sign3 = false" ng-model="form.signs.sign3" >
+ <label for="f-sign3">Hepatomegaly</label>
+</div>
+</div>
+
+
+
+
+</div>
+
+<div class="three fields">
+
+<div class="field">
+  <div class="ui  checkbox">
+
+    <input type="checkbox" id="f-sign4" ng-init="form.signs.sign4 = false" ng-model="form.signs.sign4" >
+     <label for="f-sign4">Crepitations</label>
+  </div>
+</div>
+
+<div class="field">
+  <div class="ui checkbox">
+
+    <input type="checkbox" id="f-sign5" ng-init="form.signs.sign5 = false" ng-model="form.signs.sign5" >
+    <label for="f-sign5">3rd heart sound</label>
+
+</div>
+</div>
+
+<div class="field"></div>
+
+
+</div>
+</div>
+
+
+<div class="four fields">
+
+<div class="field">
+  <label>Pulse</label>
+  <input type="text" id="f-pulse" placeholder="Pulse..."  ng-model="form.signs.pulse">
+
+ </div>
+
+ <div class="field">
+   <label>SBP</label>
+   <input type="text" id="f-sbp" placeholder="SBP..." ng-model="form.signs.sbp">
+
+  </div>
+
+  <div class="field">
+    <label>DBP</label>
+    <input type="text" id="f-dbp" placeholder="DBP..." ng-model="form.signs.dbp">
+
+   </div>
+
+   <div class="field">
+     <label>Respiratory Rate</label>
+     <input type="text" id="f-rr" placeholder="Respiratory Rate..." ng-model="form.signs.rr">
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- Section THREE -->
+
+
+
+
+
+
+
+  <div class="sec3" id="secThree" ng-show="fn === 3">
+
+
+
+<h4 class="ui dividing centered header">Chest Xray</h4>
+
+<div class="ui segment">
+<div class="three fields">
+
+<div class="field">
+<div class="ui  checkbox">
+
+<input type="checkbox" id="f-x1" ng-init="form.xray.x1 = false" ng-model="form.xray.x1" >
+<label for="f-x1">Cardiomegaly</label>
+</div>
+</div>
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-x2"  ng-init="form.xray.x2 = false" ng-model="form.xray.x2">
+<label for="f-x2">Pulmonary Congestion</label>
+</div>
+</div>
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-x3" ng-init="form.xray.x3 = false" ng-model="form.xray.x3" >
+<label for="f-x3">Pleural Effusion</label>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+<h4 class="ui dividing centered header">ECG</h4>
+
+<div class="ui segment">
+<div class="three fields">
+
+  <div class="field">
+  <div class="ui checkbox">
+
+   <input type="checkbox" id="f-ecg1" ng-init="form.ecg.ecg1 = false" ng-model="form.ecg.ecg1">
+   <label for="f-ecg1">Tachycardia</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-ecg2" ng-init="form.ecg.ecg2 = false" ng-model="form.ecg.ecg2">
+   <label for="f-ecg2">Bradycardia</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-ecg3" ng-init="form.ecg.ecg3 = false" ng-model="form.ecg.ecg3">
+   <label for="f-ecg3">Atrial fibrillation</label>
+
+  </div>
+  </div>
+
+
+
+
+</div>
+
+<div class="three fields">
+
+  <div class="field">
+  <div class="ui checkbox">
+
+   <input type="checkbox" id="f-ecg4" ng-init="form.ecg.ecg4 = false" ng-model="form.ecg.ecg4">
+   <label for="f-ecg4">Bundle bunch block</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui checkbox">
+
+   <input type="checkbox" id="f-ecg5" ng-init="form.ecg.ecg5 = false" ng-model="form.ecg.ecg5">
+   <label for="f-ecg5">LVH</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui checked checkbox">
+
+   <input type="checkbox" id="f-ecg6" ng-init="form.ecg.ecg6 = false" ng-model="form.ecg.ecg6">
+   <label for="f-ecg6">RVH</label>
+
+  </div>
+  </div>
+
+
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- Section FOUR -->
+
+
+
+
+
+
+
+<div class="sec4" id="secFour" ng-show="fn === 4">
+
+<h4 class="ui dividing centered header">ECHO</h4>
+
+<div class="ui segment">
+<div class="four fields">
+
+  <div class="field">
+  <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-echo1" ng-init="form.echo.echo1 = false" ng-model="form.echo.echo1">
+   <label for="f-echo1">LA</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui checkbox">
+
+   <input type="checkbox" id="f-echo2" ng-init="form.echo.echo2 = false" ng-model="form.echo.echo2">
+   <label for="f-echo2">LVEDD</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui  checkbox">
+
+   <input type="checkbox" id="f-echo3" ng-init="form.echo.echo3 = false" ng-model="form.echo.echo3">
+   <label for="f-echo3">EF</label>
+
+  </div>
+  </div>
+
+  <div class="field">
+  <div class="ui checkbox">
+
+   <input type="checkbox" id="f-echo4" ng-init="form.echo.echo4 = false" ng-model="form.echo.echo4">
+   <label for="f-echo4">FS</label>
+
+  </div>
+  </div>
+
+
+</div>
+
+</div>
+
+<div class="ui segment">
+<div class="field">
+<div class="ui checkbox">
+<input type="checkbox" id="f-echo5" ng-init="form.echo.echo5 = false" ng-model="form.echo.echo5">
+<label for="echo-diagnosis">Diagnosis</label>
+
+
+</div>
+</div>
+
+<div class="field">
+<label><i class="grey arrow down icon"></i> Details</label>
+<textarea rows="6" id="f-echo5details"  ng-model="form.echo.echo5details"></textarea>
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Section FIVE -->
+
+
+
+
+
+
+
+<div class="sec5 " id="secFive" ng-show="fn === 5">
+
+<h4 class="ui dividing centered header">Laboratory Results</h4>
+
+<div class="four fields">
+
+<div class="field">
+  <label>Haemoglobin</label>
+  <input type="text" id="f-haemoglobin" placeholder="Haemoglobin..."  ng-model="form.labResults.haemoglobin">
+
+ </div>
+ <div class="field">
+   <label>Sodium</label>
+   <input type="text" id="f-sodium" placeholder="Sodium..." ng-model="form.labResults.sodium">
+
+  </div>
+
+  <div class="field">
+    <label>Urea</label>
+    <input type="text" id="f-urea" placeholder="Urea..." ng-model="form.labResults.urea">
+
+   </div>
+
+   <div class="field">
+     <label>Creatine</label>
+     <input type="text" id="f-creatine" placeholder="Creatine..." ng-model="form.labResults.creatine">
+
+    </div>
+
+
+
+</div>
+
+<div class="three fields">
+
+  <div class="field">
+    <label>HIV</label>
+    <input type="text" id="f-hiv" placeholder="HIV..." ng-model="form.labResults.hiv">
+
+   </div>
+
+   <div class="field">
+     <label>CD4 Count</label>
+     <input type="text" id="f-cd4" placeholder="CD4 Count..." ng-model="form.labResults.cd4Count">
+
+    </div>
+
+    <div class="field">
+      <label>Albumin</label>
+      <input type="text" id="f-albumin" placeholder="Albumin..." ng-model="form.labResults.albumin">
+
+     </div>
+
+</div>
+
+
+
+<h4 class="ui dividing centered header">OutCome DOD</h4>
+
+<div class="four fields">
+
+  <div class="field">
+    <label>Length of Hospital Stay</label>
+    <input type="text" id="f-lengthos" placeholder="Number of days..." ng-model="form.outcomeDod.numberOfDays">
+
+   </div>
+
+   <div class="field">
+    <label>At 30 Days</label>
+    <select class="ui fluid dropdown" id="f-at30" ng-model="form.outcomeDod.at30">
+      <option value="">Select</option>
+      <option value="Alive">Alive</option>
+     <option value="Dead">Dead</option>
+    </select>
+  </div>
+
+    <div class="field">
+     <label>On Discharge</label>
+     <select class="ui fluid dropdown" id="f-ondischarge" ng-model="form.outcomeDod.onDischarge">
+       <option value="">Select</option>
+       <option value="Alive">Alive</option>
+      <option value="Dead">Dead</option>
+     </select>
+   </div>
+
+   <div class="field">
+    <label>Readmission</label>
+    <select class="ui fluid dropdown" id="f-readmission" ng-model="form.outcomeDod.readmission">
+      <option value="">Select</option>
+      <option value="Yes">Yes</option>
+     <option value="No">No</option>
+    </select>
+  </div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- Section SIX -->
+
+
+
+
+
+
+
+<div class="sec6" id="secSix" ng-show="fn === 6">
+
+<h4 class="ui dividing centered header">Cormorbid Conditions</h4>
+
+<div class="ui segment">
+<div class="four fields">
+
+  <div class="field">
+<div class="ui  checkbox">
+
+ <input type="checkbox" id="f-cc1" ng-init="form.cc.cc1 = false" ng-model="form.cc.cc1">
+ <label for="f-cc1">Hypertension</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc2"  ng-init="form.cc.cc2 = false" ng-model="form.cc.cc2">
+<label for="f-cc2">Diabetes Mellitus</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc3"  ng-init="form.cc.cc3 = false" ng-model="form.cc.cc3">
+<label for="f-cc3">Kidney Disease</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc4"  ng-init="form.cc.cc4 = false" ng-model="form.cc.cc4">
+<label for="f-cc4">Stroke</label>
+</div>
+</div>
+
+</div>
+
+
+<div class="four fields">
+
+  <div class="field">
+<div class="ui checkbox">
+
+ <input type="checkbox" id="f-cc5"  ng-init="form.cc.cc5 = false" ng-model="form.cc.cc5">
+ <label for="f-cc5">TB</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc6"  ng-init="form.cc.cc6 = false" ng-model="form.cc.cc6">
+<label for="f-cc6">COPD</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc7"  ng-init="form.cc.cc7 = false" ng-model="form.cc.cc7">
+<label for="f-cc7">HIV</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-cc8"  ng-init="form.cc.cc8 = false" ng-model="form.cc.cc8">
+<label for="f-cc8">Malignancy</label>
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+
+<h4 class="ui dividing centered header">Medications</h4>
+
+
+<div class="ui segment">
+<div class="four fields">
+
+  <div class="field">
+<div class="ui checkbox">
+
+ <input type="checkbox" id="f-med1"  ng-init="form.medications.med1 = false" ng-model="form.medications.med1">
+ <label for="f-med1">Frusemide</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med2" ng-init="form.medications.med2 = false" ng-model="form.medications.med2">
+<label for="f-med2">Morphine</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med3" ng-init="form.medications.med3 = false" ng-model="form.medications.med3">
+<label for="f-med3">ACE Inhibitor</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med4" ng-init="form.medications.med4 = false" ng-model="form.medications.med4">
+<label for="f-med4">Digoxin</label>
+</div>
+</div>
+
+</div>
+
+
+<div class="four fields">
+
+  <div class="field">
+<div class="ui checkbox">
+
+ <input type="checkbox" id="f-med5" ng-init="form.medications.med5 = false" ng-model="form.medications.med5">
+ <label for="f-med5">Beta Blocker</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med6" ng-init="form.medications.med6 = false" ng-model="form.medications.med6">
+<label for="f-med6">Anticoagulant</label>
+</div>
+</div>
+
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med7" ng-init="form.medications.med7 = false" ng-model="form.medications.med7">
+<label for="f-med7">Hydralazine</label>
+</div>
+</div>
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med8" ng-init="form.medications.med8 = false" ng-model="form.medications.med8">
+<label for="f-med8">Nitrate</label>
+</div>
+</div>
+
+</div>
+
+<div class="field">
+<div class="ui checkbox">
+
+<input type="checkbox" id="f-med9" ng-init="form.medications.med9 = false" ng-model="form.medications.med9">
+<label for="f-med9">Other</label>
+</div>
+</div>
+
+
+</div>
+
+<div class="ui horizontal divider">
+  <i class=" grey arrow circle up icon"></i>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+<!-- tab3 Forms !-->
+    <div class="tabpanel animated slideInRight" id="tabpanel" ng-controller="forms" ng-show="tab === 3">
+      <div class="ui  segment">
+        <h3 class="ui  center aligned header">
+      Forms
+      </h3>
+
+    </div>
+
+    <div class="ui fluid icon input">
+  <input type="text" placeholder="Search...">
+  <i class="blue search icon"></i>
+</div>
+
+<div class="ui fluid container listNav">
+
+    <div class="ui left floated compact primary button" ng-click="skipB()">
+      <i class="left chevron icon"></i>
+    </div>
+
+
+
+
+
+    <div class="ui right floated compact primary button" ng-click="skipF()">
+      <i class="right chevron icon"></i>
+    </div>
+
+</div>
+
+<div class="ui horizontal divider">
+
+    <div class="ui label">{{ num }}</div>
+</div>
+
+<div class="ui container listCon">
+
+<div class="ui divided items" ng-repeat="form in formss">
+
+  <div class="item">
+    <div class="ui tiny image">
+      <i class="huge file grey pdf outline icon"></i>
+    </div>
+    <div class="content">
+      <a ng-click="openForm()" class="irem header">{{form.general.firstName}} {{form.general.lastName}}</a>
+      <div class="meta">
+
+
+
+        <div class="ui disabled right floated primary button">
+          Follow Up  </div>
+          <div class="ui right floated black button">
+            Edit  </div>
+
+
+
+      </div>
+
+      <div class="extra">
+
+
+        <div class="ui purple label">{{form.general.town}}</div>
+          <div class="ui green label">{{form.general.age}}</div>
+            <div class="ui pink label"><i class="man icon"></i></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+<!-- end of tab -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+  <script src="js/database.js"></script>
+  <script src="js/lib/jquery-2.1.4.min.js"></script>
+  <script src="js/lib/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/factory.js"></script>
+  <script src="js/controllers/dashboard.js"></script>
+  <script src="js/controllers/newformtab.js"></script>
+  <script src="js/controllers/forms.js"></script>
+
+
+
+  </body>
+</html>

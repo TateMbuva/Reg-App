@@ -1,0 +1,43 @@
+
+.mainBG {
+
+  background: #EFEFEF; /* fallback for old browsers */
+
+
+  height: 100%;
+  width: auto;
+  padding: 10px;
+  padding-right: 10px !important;
+  margin-left: 260px;
+
+
+  }
+
+#tabpanel {
+
+  -webkit-animation-duration: 0.5s;
+
+}
+
+.hideIt {
+
+  display: none;
+}
+
+#formNav {
+  margin-bottom: 10px;
+}
+
+.listNav {
+
+  margin-top: 10px;
+
+}
+
+
+
+.listCon {
+
+  margin-top: 10px !important;
+  padding-top: 15px !important;
+}

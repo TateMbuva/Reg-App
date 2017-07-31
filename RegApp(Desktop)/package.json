@@ -1,0 +1,16 @@
+{
+  "name": "reg-app",
+  "version": "0.0.1",
+  "main": "main.html",
+  "window": {
+    "title": "node-webkit demo",
+    "icon": "link.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 900,
+    "height": 600,
+    "min_width": 900,
+    "min_height": 600
+  }
+
+}
